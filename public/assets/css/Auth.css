@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --pastel-blue: #bfd7ff;
+    --baby-blue: #dcebff;
+    --pastel-pink: #ffd6e7;
+    --baby-pink: #ffeaf2;
+    --accent-pink: #f58bb3;
+    --accent-blue: #6ea3f5;
+    --soft-white: #faf9fc;
+    --ink: #2b2a3d;
+    --muted: #726f83;
+    --line: #ecdff0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--soft-white);
+}
+
+.auth-page { min-height: 100vh; display: flex; }
+
+/* ---------- Panel kiri: brand (pastel, teks gelap) ---------- */
+.auth-brand {
+    position: relative;
+    flex: 1 1 44%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 3.5rem;
+    color: var(--ink);
+    background: linear-gradient(155deg, var(--pastel-blue) 0%, var(--baby-pink) 55%, var(--pastel-pink) 100%);
+    overflow: hidden;
+}
+
+.auth-brand::before, .auth-brand::after { content: ''; position: absolute; border-radius: 50%; filter: blur(6px); }
+.auth-brand::before { width: 380px; height: 380px; right: -140px; top: -120px; background: rgba(255,255,255,0.35); }
+.auth-brand::after { width: 300px; height: 300px; left: -100px; bottom: -100px; background: rgba(255,255,255,0.25); }
+
+.brand-mark { position: relative; z-index: 1; display: flex; align-items: center; gap: 0.6rem; }
+.brand-mark img { height: 36px; width: auto; object-fit: contain; }
+.brand-mark .wordmark-fallback { display: none; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--ink); }
+
+.brand-copy { position: relative; z-index: 1; max-width: 380px; }
+.brand-copy h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(1.9rem, 3.2vw, 2.5rem); line-height: 1.18; margin: 0 0 0.9rem; color: var(--ink); }
+.brand-copy p { font-size: 1rem; line-height: 1.6; color: rgba(43,42,61,0.75); margin: 0; }
+
+.brand-foot { position: relative; z-index: 1; font-size: 0.85rem; color: rgba(43,42,61,0.6); }
+
+/* ---------- Panel kanan: form ---------- */
+.auth-form-panel { flex: 1 1 56%; display: flex; align-items: center; justify-content: center; padding: 2.5rem; background: var(--baby-blue); }
+
+.auth-card { width: 100%; max-width: 380px; }
+.auth-card .eyebrow { color: var(--accent-pink); font-weight: 700; font-size: 0.85rem; margin: 0 0 0.4rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.auth-card h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.9rem; margin: 0 0 0.4rem; }
+.auth-card .sub { color: var(--muted); font-size: 0.92rem; margin: 0 0 1.75rem; }
+
+.field { margin-bottom: 1.15rem; }
+.field label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--ink); }
+.field input {
+    width: 100%; padding: 0.75rem 0.9rem; border: 1.5px solid var(--line); border-radius: 10px;
+    background: #fff; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--ink); outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field input:focus { border-color: var(--accent-pink); box-shadow: 0 0 0 3px rgba(245,139,179,0.18); }
+
+.btn-primary {
+    width: 100%; border: none; border-radius: 10px; padding: 0.85rem 1rem;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem; color: #fff;
+    background: linear-gradient(120deg, var(--accent-blue), var(--accent-pink));
+    cursor: pointer; transition: opacity 0.15s ease, transform 0.1s ease;
+    box-shadow: 0 8px 18px rgba(245,139,179,0.3);
+}
+.btn-primary:hover { opacity: 0.93; }
+.btn-primary:active { transform: translateY(1px); }
+
+.auth-switch { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted); }
+.auth-switch a { color: var(--accent-pink); font-weight: 700; text-decoration: none; }
+.auth-switch a:hover { text-decoration: underline; }
+
+.alert { padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.85rem; margin-bottom: 1.25rem; }
+.alert-danger { background: #ffe0ec; color: #c0295a; border: 1px solid var(--pastel-pink); }
+.alert-success { background: #e3f6ea; color: #1e8a4c; border: 1px solid #bfe9cf; }
+.alert ul { margin: 0; padding-left: 1.1rem; }
+
+.row-2 { display: flex; gap: 0.85rem; }
+.row-2 .field { flex: 1; }
+
+@media (max-width: 860px) {
+    .auth-page { flex-direction: column; }
+    .auth-brand { flex: none; min-height: auto; padding: 2rem 1.75rem; }
+    .brand-copy { max-width: none; }
+    .brand-copy h1 { font-size: 1.6rem; }
+    .brand-copy p { display: none; }
+    .brand-foot { display: none; }
+    .auth-form-panel { padding: 2rem 1.5rem 3rem; }
+}
